@@ -1,38 +1,38 @@
 package com.company.classes;
 
 public class Vector {
-    private int x;
-    private int y;
-    private int z;
+    private double x;
+    private double y;
+    private double z;
 
-    public Vector(final int x, final int y, final int z) {
+    public Vector(final double x, final double y, final double z) {
         this.setX(x);
         this.setY(y);
         this.setZ(z);
 
     }
 
-    public int getX() {
+    public double getX() {
         return x;
     }
 
-    public void setX(int x) {
+    public void setX(double x) {
         this.x = x;
     }
 
-    public int getY() {
+    public double getY() {
         return y;
     }
 
-    public void setY(int y) {
+    public void setY(double y) {
         this.y = y;
     }
 
-    public int getZ() {
+    public double getZ() {
         return z;
     }
 
-    public void setZ(int z) {
+    public void setZ(double z) {
         this.z = z;
     }
 
@@ -59,14 +59,14 @@ public class Vector {
 
     public static boolean isCollinear(Vector aVector, Vector bVector) {
         double n = bVector.getY() / aVector.getY();
-        boolean isCollinear=false;
-        if(((aVector.getX() / bVector.getX()) == (aVector.getY() / bVector.getY())) && ((aVector.getX() / bVector.getX()) == (aVector.getZ() / bVector.getZ()))&&((aVector.getY() / bVector.getY()) == (aVector.getZ() / bVector.getZ()))){
+        boolean isCollinear = false;
+        if (((aVector.getX() / bVector.getX()) == (aVector.getY() / bVector.getY())) && ((aVector.getX() / bVector.getX()) == (aVector.getZ() / bVector.getZ())) && ((aVector.getY() / bVector.getY()) == (aVector.getZ() / bVector.getZ()))) {
             isCollinear = true;
         }
-        if((n*aVector.getX()==bVector.getX())&&((n*aVector.getY()==bVector.getY())&&((n*aVector.getZ()==bVector.getZ())))){
+        if ((n * aVector.getX() == bVector.getX()) && ((n * aVector.getY() == bVector.getY()) && ((n * aVector.getZ() == bVector.getZ())))) {
             isCollinear = true;
         }
-        if(((vectorProduct(aVector, bVector).getY() == 0))&&(vectorProduct(aVector, bVector).getY() == 0) && (vectorProduct(aVector, bVector).getZ() == 0)){
+        if (((vectorProduct(aVector, bVector).getY() == 0)) && (vectorProduct(aVector, bVector).getY() == 0) && (vectorProduct(aVector, bVector).getZ() == 0)) {
             isCollinear = true;
         }
         return isCollinear;
