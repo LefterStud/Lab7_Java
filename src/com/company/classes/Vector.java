@@ -1,60 +1,75 @@
 package com.company.classes;
 
 public class Vector {
-    private int ax;
-    private int ay;
-    private int az;
-    private int bx;
-    private int by;
-    private int bz;
+    private int x;
+    private int y;
+    private int z;
 
-    public Vector(final int ax, final int ay, final int az, final int bx, final int by, final int bz) {
-        this.setAx(ax);
-        this.setAy(ay);
-        this.setAz(az);
-        this.setBx(bx);
-        this.setBy(by);
-        this.setBz(bz);
+    public Vector(final int x, final int y, final int z) {
+        this.setX(x);
+        this.setY(y);
+        this.setZ(z);
+
     }
 
-    public void setAx(int ax) {
-        this.ax = ax;
-    }
-    public void setAy(int ay) {
-        this.ay = ay;
-    }
-    public void setAz(int az) {
-        this.az = az;
-    }
-    public void setBx(int bx) {
-        this.bx = bx;
-    }
-    public void setBy(int by) {
-        this.by = by;
-    }
-    public void setBz(int bz) {
-        this.bz = bz;
+    public int getX() {
+        return x;
     }
 
-    public int getAx() {
-        return ax;
-    }
-    public int getAy() {
-        return ay;
-    }
-    public int getAz() {
-        return az;
-    }
-    public int getBx() {
-        return bx;
-    }
-    public int getBy() {
-        return by;
-    }
-    public int getBz() {
-        return bz;
+    public void setX(int x) {
+        this.x = x;
     }
 
-    
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public int getZ() {
+        return z;
+    }
+
+    public void setZ(int z) {
+        this.z = z;
+    }
+
+    @Override
+    public String toString() {
+        return "Vector{" +
+                "x=" + x +
+                ", y=" + y +
+                ", z=" + z +
+                '}';
+    }
+
+    public static Vector sum(Vector aVector, Vector bVector) {
+        return new Vector(aVector.getX() + bVector.getX(), aVector.getY() + bVector.getY(), aVector.getZ() + bVector.getZ());
+    }
+
+    public static double scalarProduct(Vector aVector, Vector bVector) {
+        return aVector.getX() * bVector.getX() + aVector.getY() * bVector.getY() + aVector.getZ() * bVector.getZ();
+    }
+
+    public static Vector vectorProduct(Vector aVector, Vector bVector) {
+        return new Vector((aVector.getY() * bVector.getZ() - aVector.getZ() * bVector.getY()), (aVector.getZ() * bVector.getX() - aVector.getX() * bVector.getZ()), (aVector.getX() * bVector.getY() - aVector.getY() * bVector.getX()));
+    }
+
+    public static boolean isCollinear(Vector aVector, Vector bVector) {
+        double n = bVector.getY() / aVector.getY();
+        boolean isCollinear=false;
+        if(((aVector.getX() / bVector.getX()) == (aVector.getY() / bVector.getY())) && ((aVector.getX() / bVector.getX()) == (aVector.getZ() / bVector.getZ()))&&((aVector.getY() / bVector.getY()) == (aVector.getZ() / bVector.getZ()))){
+            isCollinear = true;
+        }
+        if((n*aVector.getX()==bVector.getX())&&((n*aVector.getY()==bVector.getY())&&((n*aVector.getZ()==bVector.getZ())))){
+            isCollinear = true;
+        }
+        if(((vectorProduct(aVector, bVector).getY() == 0))&&(vectorProduct(aVector, bVector).getY() == 0) && (vectorProduct(aVector, bVector).getZ() == 0)){
+            isCollinear = true;
+        }
+        return isCollinear;
+    }
 
 }
